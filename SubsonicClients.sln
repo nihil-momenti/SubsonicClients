@@ -3,12 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 11
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsonicMusicPlayer", "SubsonicMusicPlayer\SubsonicMusicPlayer.csproj", "{E0F3412A-B7D5-4943-932A-07C0FDA73D39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsonicApi", "SubsonicApi\SubsonicApi.csproj", "{D498D866-7202-41DE-9804-6FF3D3C3987E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D498D866-7202-41DE-9804-6FF3D3C3987E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D498D866-7202-41DE-9804-6FF3D3C3987E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D498D866-7202-41DE-9804-6FF3D3C3987E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D498D866-7202-41DE-9804-6FF3D3C3987E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E0F3412A-B7D5-4943-932A-07C0FDA73D39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E0F3412A-B7D5-4943-932A-07C0FDA73D39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0F3412A-B7D5-4943-932A-07C0FDA73D39}.Release|Any CPU.ActiveCfg = Release|Any CPU
