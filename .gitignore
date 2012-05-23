@@ -3,3 +3,5 @@
 /SubsonicMusicPlayer/obj/
 /SubsonicApi/bin/
 /SubsonicApi/obj/
+/SubsonicApi/SubsonicApi.csproj.user
+/packages

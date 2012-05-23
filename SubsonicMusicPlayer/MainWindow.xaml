@@ -2,7 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Vertical" Width="200">
+            <TextBox Name="BaseUriBox">https://subsonic.nemo157.com:4444</TextBox>
+            <TextBox Name="UserBox">guest</TextBox>
+            <TextBox Name="PassBox">guest</TextBox>
+            <Button Click="Button_Click">Try</Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Name="Result" />
+        </StackPanel>
+    </StackPanel>
 </Window>
