@@ -4,6 +4,6 @@ using System.Linq;
 using System.Text;
 
 namespace SubsonicApi {
-    public class NowPlaying {
+    public class SubsonicId {
     }
 }

@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices;
-using System.Security;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
+using SubsonicApi.Data;
 
 namespace SubsonicApi {
     public class SubsonicClient {
@@ -15,10 +11,10 @@ namespace SubsonicApi {
 
         public bool Connected { get; set; }
 
-        public SubsonicClient(string baseHost, string username, string password, string clientId) {
+        public SubsonicClient(string baseHost, string userName, string password, string clientId) {
             _client = new RestClient(baseHost);
             _client.UserAgent = clientId;
-            _client.AddDefaultParameter("u", username);
+            _client.AddDefaultParameter("u", userName);
             _client.AddDefaultParameter("p", password);
             _client.AddDefaultParameter("c", clientId);
             _client.AddDefaultParameter("v", "1.7.0");
@@ -28,18 +24,30 @@ namespace SubsonicApi {
         }
 
         public async Task<bool> Ping() {
-            return await DoSimpleRequest("rest/ping.view", response => response.IsOk.GetValueOrDefault(false));
+            return await DoSimpleRequest("rest/ping.view", response => response.Ok);
         }
 
-        public async Task<List<MusicFolder>> GetMusicFolders() {
+        public async Task<IReadOnlyList<MusicFolder>> GetMusicFolders() {
             return await DoSimpleRequest("rest/getMusicFolders.view", response => response.MusicFolders);
         }
 
-        public async Task<List<NowPlaying>> GetNowPlaying() {
+        public async Task<IReadOnlyList<NowPlaying>> GetNowPlaying() {
             return await DoSimpleRequest("rest/getNowPlaying.view", response => response.NowPlaying);
         }
 
-        public async Task<IndexList> GetIndexes(MusicFolder folder = null, DateTime? modifiedSince = null) {
+        public async Task<IndexList> GetIndexes() {
+            return await GetIndexes(null, null);
+        }
+
+        public async Task<IndexList> GetIndexes(MusicFolder folder) {
+            return await GetIndexes(folder, null);
+        }
+
+        public async Task<IndexList> GetIndexes(DateTime? modifiedSince) {
+            return await GetIndexes(null, modifiedSince);
+        }
+
+        public async Task<IndexList> GetIndexes(MusicFolder folder, DateTime? modifiedSince) {
             var parameters = new List<Parameter>();
             if (folder != null) {
                 parameters.Add(new Parameter { Name = "musicFolderId", Value = folder.Id, Type = ParameterType.GetOrPost });
@@ -61,28 +69,12 @@ namespace SubsonicApi {
                 request.AddParameter(parameter);
             }
             var response = await RunRequest(request);
-            ThrowOnErrors(response);
-            return transform(response.Data);
+            response.ThrowOnErrors();
+            return transform(new SubsonicResponse(response.Data));
         }
 
-        private void ThrowOnErrors(IRestResponse<SubsonicResponse> response) {
-            if (response.ResponseStatus == ResponseStatus.Error) {
-                throw new ConnectionException(response.ErrorMessage, response.ErrorException);
-            }
-
-            if (!response.Data.IsOk.HasValue) {
-                throw new SubsonicApiException("Unknown failure");
-            }
-
-            if (!response.Data.IsOk.Value) {
-                if (response.Data.Error != null) {
-                    throw new SubsonicServerException(response.Data.Error);
-                }
-            }
-        }
-
-        private Task<IRestResponse<SubsonicResponse>> RunRequest(RestRequest request) {
-            return Task.Run(() => _client.Execute<SubsonicResponse>(request));
+        private Task<IRestResponse<SubsonicResponseData>> RunRequest(RestRequest request) {
+            return Task.Run(() => _client.Execute<SubsonicResponseData>(request));
         }
     }
 }

@@ -9,7 +9,7 @@ namespace SubsonicApi {
         ParameterMissing = 10,
         ClientMustUpgrade = 20,
         ServerMustUpgrade = 30,
-        WrongUsernameOrPassword = 40,
+        WrongUserNameOrPassword = 40,
         UserIsNotAuthorizedForTheGivenOperation = 50,
         TrialPeriodExpired = 60,
         RequestedDataNotFound = 70,
