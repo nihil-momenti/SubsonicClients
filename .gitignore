@@ -1,6 +1,8 @@
 /SubsonicClients.v11.suo
 /SubsonicMusicPlayer/bin/
 /SubsonicMusicPlayer/obj/
+/SubsonicApiTests/bin/
+/SubsonicApiTests/obj/
 /SubsonicApi/bin/
 /SubsonicApi/obj/
 /SubsonicApi/SubsonicApi.csproj.user
