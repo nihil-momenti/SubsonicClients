@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace SubsonicApi.Data {
+    [CompareByProperties]
     internal class SubsonicErrorData {
         public int Code { get; set; }
         public string Message { get; set; }

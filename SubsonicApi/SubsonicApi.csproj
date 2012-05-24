@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Data\ArtistData.cs" />
     <Compile Include="Data\ChildData.cs" />
+    <Compile Include="Data\CompareByPropertiesAttribute.cs" />
     <Compile Include="Exceptions\ConnectionException.cs" />
     <Compile Include="Data\IndexData.cs" />
     <Compile Include="Data\IndexesData.cs" />

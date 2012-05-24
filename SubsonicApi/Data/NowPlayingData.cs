@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 
 namespace SubsonicApi.Data {
+    [CompareByProperties]
     internal class NowPlayingData {
         public string UserName { get; set; }
         public int MinutesAgo { get; set; }
         public string PlayerId { get; set; }
+        public string PlayerName { get; set; }
         public string Id { get; set; }
         public string Parent { get; set; }
         public string Title { get; set; }

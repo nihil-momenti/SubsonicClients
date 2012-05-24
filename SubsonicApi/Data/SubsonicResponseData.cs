@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RestSharp.Deserializers;
+using RestSharp.Serializers;
 
 namespace SubsonicApi.Data {
-    internal class SubsonicResponseData : IEquatable<SubsonicResponseData> {
+    [CompareByProperties]
+    internal class SubsonicResponseData {
         private const string OkStatus = "ok";
 
         public string Status { get; set; }
@@ -20,31 +23,16 @@ namespace SubsonicApi.Data {
             MusicFolders = new List<MusicFolderData>();
         }
          
-        public override bool Equals(object obj) {
-            return Equals(obj as SubsonicResponseData);
-        }
-
-        public bool Equals(SubsonicResponseData other) {
-            if (other == null) {
-                return false;
-            }
-
-            return Error.MaybeEquals(other.Error)
-                && NowPlaying.ListEquals(other.NowPlaying)
-                && MusicFolders.ListEquals(other.MusicFolders)
-                && Indexes.MaybeEquals(other.Indexes);
-        }
-
-        public override int GetHashCode() {
-            return Error.MaybeGetHashCode() ^ NowPlaying.GetListHashCode() ^ MusicFolders.GetListHashCode() ^ Indexes.MaybeGetHashCode();
-        }
-
         private bool? _isOk;
         public bool IsOk {
             get {
                 _isOk = _isOk ?? string.Equals(Status, OkStatus, StringComparison.OrdinalIgnoreCase);
                 return _isOk.Value;
             }
+        }
+
+        public override string ToString() {
+            return new JsonSerializer().Serialize(this);
         }
     }
 }

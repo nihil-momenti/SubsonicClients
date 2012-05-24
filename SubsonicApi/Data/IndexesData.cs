@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace SubsonicApi.Data {
+    [CompareByProperties]
     internal class IndexList {
         public string LastModified { get; set; }
         public List<ShortcutData> Shortcuts { get; set; }
