@@ -16,9 +16,10 @@ namespace SubsonicApiTests {
 
         internal async static Task<IRestResponse> CreateResponse(string sample) {
             Mock<IRestResponse> response = new Mock<IRestResponse>();
-            var file = Async.Using(await Load(sample), stream =>
-                            Async.Using(new StreamReader(stream), reader =>
-                                reader.ReadToEndAsync()));
+            var file = Async.AutoDispose(
+                            Async.Using(await Load(sample), stream =>
+                                Async.Using(new StreamReader(stream), reader =>
+                                    reader.ReadToEndAsync())));
             response.SetupGet(res => res.Content).Returns(() => file.Result);
             return response.Object;
         }

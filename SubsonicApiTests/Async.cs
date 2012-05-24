@@ -41,5 +41,9 @@ namespace SubsonicApiTests {
                 return task.Result;
             });
         }
+
+        internal static AutoDisposingTask<T> AutoDispose<T>(Task<T> task) {
+            return new AutoDisposingTask<T>(task);
+        }
     }
 }

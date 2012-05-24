@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoDisposingTask.cs" />
     <Compile Include="DataTests.cs" />
     <Compile Include="Async.cs" />
     <Compile Include="GlobalSuppressions.cs" />
