@@ -7,3 +7,5 @@
 /SubsonicApi/obj/
 /SubsonicApi/SubsonicApi.csproj.user
 /packages
+/SubsonicClients.crunchsolution.cache
+/SubsonicClients.ncrunchsolution.user
