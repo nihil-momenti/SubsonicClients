@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace SubsonicApiTests {
-    internal class AutoDisposingTask<T> {
+namespace Nemo157.Common {
+    public class AutoDisposingTask<T> {
         private Task<T> _task;
         private T _result;
 
-        internal T Result {
+        public T Result {
             get {
                 AcquireResult();
                 return _result;
@@ -24,7 +20,7 @@ namespace SubsonicApiTests {
             }
         }
 
-        internal AutoDisposingTask(Task<T> task) {
+        public AutoDisposingTask(Task<T> task) {
             _task = task;
         }
     }

@@ -1,4 +1,6 @@
-/SubsonicClients.v11.suo
+/Nemo157.Common/bin/
+/Nemo157.Common/obj/
+/Nemo157.Common/Nemo157.Common.csproj.user
 /SubsonicMusicPlayer/bin/
 /SubsonicMusicPlayer/obj/
 /SubsonicMusicPlayer/SubsonicMusicPlayer.csproj.user
@@ -11,3 +13,4 @@
 /packages
 /SubsonicClients.crunchsolution.cache
 /SubsonicClients.ncrunchsolution.user
+/SubsonicClients.v11.suo

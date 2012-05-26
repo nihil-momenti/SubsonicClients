@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5F34B4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubsonicApiTests", "SubsonicApiTests\SubsonicApiTests.csproj", "{21430A3F-603D-4DF5-91B2-2F4AFCDD91D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nemo157.Common", "Nemo157.Common\Nemo157.Common.csproj", "{D1EA7C60-082D-483D-8FB3-866DBD2FF8E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{ACB9AB69-BC7B-40A1-AEFB-033359F607DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACB9AB69-BC7B-40A1-AEFB-033359F607DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACB9AB69-BC7B-40A1-AEFB-033359F607DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EA7C60-082D-483D-8FB3-866DBD2FF8E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EA7C60-082D-483D-8FB3-866DBD2FF8E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EA7C60-082D-483D-8FB3-866DBD2FF8E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EA7C60-082D-483D-8FB3-866DBD2FF8E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E0F3412A-B7D5-4943-932A-07C0FDA73D39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E0F3412A-B7D5-4943-932A-07C0FDA73D39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0F3412A-B7D5-4943-932A-07C0FDA73D39}.Release|Any CPU.ActiveCfg = Release|Any CPU

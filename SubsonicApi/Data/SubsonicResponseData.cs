@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Nemo157.Common;
 using RestSharp.Deserializers;
 using RestSharp.Serializers;
 

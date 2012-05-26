@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Data\ArtistData.cs" />
     <Compile Include="Data\ChildData.cs" />
-    <Compile Include="Data\CompareByPropertiesAttribute.cs" />
     <Compile Include="Exceptions\ConnectionException.cs" />
     <Compile Include="Data\IndexData.cs" />
     <Compile Include="Data\IndexesData.cs" />
@@ -78,6 +77,12 @@
     <None Include="SubsonicCertificate.p7b">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nemo157.Common\Nemo157.Common.csproj">
+      <Project>{d1ea7c60-082d-483d-8fb3-866dbd2ff8e0}</Project>
+      <Name>Nemo157.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
