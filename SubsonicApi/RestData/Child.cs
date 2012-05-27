@@ -6,11 +6,7 @@ using Nemo157.Common;
 
 namespace SubsonicApi.RestData {
     [CompareByProperties]
-    internal class NowPlayingData {
-        public string UserName { get; set; }
-        public int MinutesAgo { get; set; }
-        public string PlayerId { get; set; }
-        public string PlayerName { get; set; }
+    public class Child {
         public string Id { get; set; }
         public string Parent { get; set; }
         public string Title { get; set; }
@@ -26,6 +22,8 @@ namespace SubsonicApi.RestData {
         public string Suffix { get; set; }
         public string TranscodedContentType { get; set; }
         public string TranscodedSuffix { get; set; }
+        public int Duration { get; set; }
+        public int BitRate { get; set; }
         public string Path { get; set; }
     }
 }

@@ -61,6 +61,7 @@ namespace Nemo157.Common {
                     _failures.Add(new ValueFailure { Path = path, Expected = expected, Actual = actual });
                 }
             } else if (typeof(IEnumerable).IsAssignableFrom(expectedType)) {
+                PropertyEquals(((IEnumerable)expected).Cast<object>().Count(), ((IEnumerable)actual).Cast<object>().Count(), path + ".Count");
                 foreach (var pair in ((IEnumerable)expected).Cast<object>().Zip(((IEnumerable)actual).Cast<object>()).Select((pair, index) => new { Index = index, Pair = pair })) {
                     PropertyEquals(pair.Pair.Key, pair.Pair.Value, path + "[" + pair.Index + "]");
                 }

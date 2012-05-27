@@ -6,7 +6,7 @@ using Nemo157.Common;
 
 namespace SubsonicApi.RestData {
     [CompareByProperties]
-    internal class SubsonicErrorData {
+    public class SubsonicError {
         public int Code { get; set; }
         public string Message { get; set; }
 

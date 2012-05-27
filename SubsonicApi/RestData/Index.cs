@@ -6,7 +6,12 @@ using Nemo157.Common;
 
 namespace SubsonicApi.RestData {
     [CompareByProperties]
-    internal class IndexCollection : List<ArtistData> {
+    public class Index {
+        public Index() {
+            Artists = new List<Artist>();
+        }
+
         public string Name { get; set; }
+        public List<Artist> Artists { get; set; }
     }
 }

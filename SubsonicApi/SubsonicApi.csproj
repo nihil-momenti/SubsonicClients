@@ -49,28 +49,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ArtistData.cs" />
-    <Compile Include="Data\ChildData.cs" />
+    <Compile Include="RestData\Artist.cs" />
+    <Compile Include="RestData\Child.cs" />
     <Compile Include="Exceptions\ConnectionException.cs" />
-    <Compile Include="Data\IndexData.cs" />
-    <Compile Include="Data\IndexesData.cs" />
-    <Compile Include="Data\MusicFolderData.cs" />
-    <Compile Include="Data\NowPlayingData.cs" />
+    <Compile Include="RestData\Directory.cs" />
+    <Compile Include="RestData\Index.cs" />
+    <Compile Include="RestData\Indexes.cs" />
+    <Compile Include="RestData\MusicFolder.cs" />
+    <Compile Include="RestData\NowPlaying.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="IndexList.cs" />
-    <Compile Include="MusicFolder.cs" />
-    <Compile Include="NowPlaying.cs" />
+    <Compile Include="Data\IndexList.cs" />
+    <Compile Include="Data\MusicFolder.cs" />
+    <Compile Include="Data\NowPlaying.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Data\ShortcutData.cs" />
-    <Compile Include="SubsonicApiExtensions.cs" />
+    <Compile Include="RestData\Shortcut.cs" />
+    <Compile Include="InternalExtensions.cs" />
     <Compile Include="SubsonicClient.cs" />
     <Compile Include="Exceptions\SubsonicApiException.cs" />
-    <Compile Include="Data\SubsonicErrorData.cs" />
-    <Compile Include="SubsonicErrorCode.cs" />
-    <Compile Include="Data\SubsonicResponseData.cs" />
+    <Compile Include="RestData\SubsonicError.cs" />
+    <Compile Include="Data\SubsonicErrorCode.cs" />
+    <Compile Include="RestData\SubsonicRestResponse.cs" />
     <Compile Include="Exceptions\SubsonicServerException.cs" />
-    <Compile Include="SubsonicId.cs" />
-    <Compile Include="SubsonicResponse.cs" />
+    <Compile Include="Data\SubsonicId.cs" />
+    <Compile Include="Data\SubsonicResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

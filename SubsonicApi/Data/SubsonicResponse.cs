@@ -13,7 +13,7 @@ namespace SubsonicApi {
         public IReadOnlyList<MusicFolder> MusicFolders { get; set; }
         public IndexList Indexes { get; set; }
 
-        internal SubsonicResponse(SubsonicResponseData data) {
+        internal SubsonicResponse(SubsonicRestResponse data) {
             Ok = data.IsOk;
         }
     }

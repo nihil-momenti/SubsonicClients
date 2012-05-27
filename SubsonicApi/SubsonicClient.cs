@@ -73,8 +73,8 @@ namespace SubsonicApi {
             return transform(new SubsonicResponse(response.Data));
         }
 
-        private Task<IRestResponse<SubsonicResponseData>> RunRequest(RestRequest request) {
-            return Task.Run(() => _client.Execute<SubsonicResponseData>(request));
+        private Task<IRestResponse<SubsonicRestResponse>> RunRequest(RestRequest request) {
+            return Task.Run(() => _client.Execute<SubsonicRestResponse>(request));
         }
     }
 }

@@ -6,7 +6,7 @@ using Nemo157.Common;
 
 namespace SubsonicApi.RestData {
     [CompareByProperties]
-    internal class ShortcutData {
+    public class Shortcut {
         public string Id { get; set; }
         public string Name { get; set; }
     }
