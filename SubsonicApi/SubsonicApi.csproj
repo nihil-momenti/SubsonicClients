@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RestData\Album.cs" />
+    <Compile Include="RestData\AllowedUser.cs" />
     <Compile Include="RestData\Artist.cs" />
+    <Compile Include="RestData\ChatMessage.cs" />
     <Compile Include="RestData\Child.cs" />
     <Compile Include="Exceptions\ConnectionException.cs" />
     <Compile Include="RestData\Directory.cs" />
@@ -62,8 +65,12 @@
     <Compile Include="Data\MusicFolder.cs" />
     <Compile Include="Data\NowPlaying.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestData\Playlist.cs" />
+    <Compile Include="RestData\SearchResult2.cs" />
     <Compile Include="RestData\Shortcut.cs" />
     <Compile Include="InternalExtensions.cs" />
+    <Compile Include="RestData\Song.cs" />
+    <Compile Include="RestData\User.cs" />
     <Compile Include="SubsonicClient.cs" />
     <Compile Include="Exceptions\SubsonicApiException.cs" />
     <Compile Include="RestData\SubsonicError.cs" />
