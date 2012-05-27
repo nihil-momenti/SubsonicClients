@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Nemo157.Common;
 
-namespace SubsonicApi.Data {
+namespace SubsonicApi.RestData {
     [CompareByProperties]
     internal class SubsonicErrorData {
         public int Code { get; set; }

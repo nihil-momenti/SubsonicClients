@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SubsonicApi.Data;
+using SubsonicApi.RestData;
 
 namespace SubsonicApi {
     public class SubsonicResponse {

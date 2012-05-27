@@ -2,7 +2,7 @@
 using Nemo157.Common;
 using NUnit.Framework;
 using RestSharp.Deserializers;
-using SubsonicApi.Data;
+using SubsonicApi.RestData;
 
 namespace SubsonicApiTests {
     [TestFixture]

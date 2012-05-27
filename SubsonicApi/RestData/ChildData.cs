@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Nemo157.Common;
 
-namespace SubsonicApi.Data {
-    [CompareByProperties]
-    internal class NowPlayingData {
-        public string UserName { get; set; }
-        public int MinutesAgo { get; set; }
-        public string PlayerId { get; set; }
-        public string PlayerName { get; set; }
+namespace SubsonicApi.RestData {
+    internal class ChildData {
         public string Id { get; set; }
         public string Parent { get; set; }
         public string Title { get; set; }
@@ -26,6 +20,8 @@ namespace SubsonicApi.Data {
         public string Suffix { get; set; }
         public string TranscodedContentType { get; set; }
         public string TranscodedSuffix { get; set; }
+        public int Duration { get; set; }
+        public int Bitrate { get; set; }
         public string Path { get; set; }
     }
 }

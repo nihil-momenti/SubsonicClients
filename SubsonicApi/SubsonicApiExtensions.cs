@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RestSharp;
-using SubsonicApi.Data;
+using SubsonicApi.RestData;
 
 namespace SubsonicApi {
     internal static class SubsonicApiExtensions {

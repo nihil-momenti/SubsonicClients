@@ -6,7 +6,7 @@ using Nemo157.Common;
 using RestSharp.Deserializers;
 using RestSharp.Serializers;
 
-namespace SubsonicApi.Data {
+namespace SubsonicApi.RestData {
     [CompareByProperties]
     internal class SubsonicResponseData {
         private const string OkStatus = "ok";
