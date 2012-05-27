@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Nemo157.Common {
-    public static class ExtensionMethods {
+    public static class LinqExtensions {
         [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
         public static IEnumerable<KeyValuePair<T1, T2>> Zip<T1, T2>(this IEnumerable<T1> list1, IEnumerable<T2> list2) {
             return list1.Zip(list2, (item1, item2) => new KeyValuePair<T1, T2>(item1, item2));
