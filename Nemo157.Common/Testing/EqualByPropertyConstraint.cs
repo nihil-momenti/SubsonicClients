@@ -57,12 +57,16 @@ namespace Nemo157.Common {
                     PropertyEquals(property.Getter.Invoke(expected, null), property.Getter.Invoke(actual, null), path + "." + property.Name);
                 }
             } else if (expectedType == typeof(string)) {
-                if (!((string)expected).Equals((string)actual, StringComparison.Ordinal)) {
-                    _failures.Add(new ValueFailure { Path = path, Expected = expected, Actual = actual });
+                string expectedString = (string)expected;
+                string actualString = (string)actual;
+                if (!(expectedString).Equals(actualString, StringComparison.Ordinal)) {
+                    _failures.Add(new StringFailure { Path = path, Expected = expectedString, Actual = actualString });
                 }
             } else if (typeof(IEnumerable).IsAssignableFrom(expectedType)) {
-                PropertyEquals(((IEnumerable)expected).Cast<object>().Count(), ((IEnumerable)actual).Cast<object>().Count(), path + ".Count");
-                foreach (var pair in ((IEnumerable)expected).Cast<object>().Zip(((IEnumerable)actual).Cast<object>()).Select((pair, index) => new { Index = index, Pair = pair })) {
+                IEnumerable<object> expectedEnumerable = ((IEnumerable)expected).Cast<object>();
+                IEnumerable<object> actualEnumerable = ((IEnumerable)actual).Cast<object>();
+                PropertyEquals(expectedEnumerable.Count(), actualEnumerable.Count(), path + ".Count");
+                foreach (var pair in expectedEnumerable.Zip(actualEnumerable).Select((pair, index) => new { Index = index, Pair = pair })) {
                     PropertyEquals(pair.Pair.Key, pair.Pair.Value, path + "[" + pair.Index + "]");
                 }
             } else {
@@ -85,6 +89,16 @@ namespace Nemo157.Common {
             public override void WriteMessageTo(MessageWriter writer) {
                 writer.WriteMessageLine("Difference at {0}", Path);
                 writer.DisplayDifferences(Expected, Actual);
+            }
+        }
+
+        private class StringFailure : Failure {
+            public string Expected { get; set; }
+            public string Actual { get; set; }
+
+            public override void WriteMessageTo(MessageWriter writer) {
+                writer.WriteMessageLine("Difference at {0}", Path);
+                writer.DisplayStringDifferences(Expected, Actual, Expected.Zip(Actual, (c1, c2) => c1 == c2).ToList().IndexOf(false), false, true);
             }
         }
 

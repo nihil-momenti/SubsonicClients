@@ -95,13 +95,13 @@ namespace SubsonicApiTests {
             var expectedResponse = new SubsonicRestResponse {
                 Status = "ok",
                 Version = "1.1.1",
-                Indexes = new Indexes {
+                Indexes = new IndexList {
                     LastModified = "237462836472342",
                     Shortcuts = new List<Shortcut> {
                         new Shortcut { Id = "11", Name = "Audio books" },
                         new Shortcut { Id = "10", Name = "Podcasts" },
                     },
-                    Indices = new List<Index> {
+                    Indexes = new List<Index> {
                         new Index {
                             Name = "A",
                             Artists = new List<Artist> {
@@ -252,7 +252,7 @@ namespace SubsonicApiTests {
                             Album = "Arrival",
                             Artist = "ABBA",
                             Track = "7",
-                            Year = "1978",
+                            Year = 1978,
                             Genre = "Pop",
                             CoverArt = "25",
                             Size = 4910028,
@@ -309,7 +309,7 @@ namespace SubsonicApiTests {
                 Status = "ok",
                 Version = "1.7.0",
                 User = new User {
-                    Username = "sindre",
+                    UserName = "sindre",
                     Email = "sindre@activeobjects.no",
                     ScrobblingEnabled = true,
                     AdminRole = false,
@@ -335,12 +335,12 @@ namespace SubsonicApiTests {
                 Version = "1.2.0",
                 ChatMessages = new List<ChatMessage> {
                     new ChatMessage {
-                        Username = "sindre",
+                        UserName = "sindre",
                         Time = "1269771845310",
                         Message = "Sindre was here",
                     },
                     new ChatMessage {
-                        Username = "ben",
+                        UserName = "ben",
                         Time = "1269771842504",
                         Message = "Ben too",
                     },
@@ -393,7 +393,7 @@ namespace SubsonicApiTests {
                             Album = "Arrival",
                             Artist = "ABBA",
                             Track = "7",
-                            Year = "1978",
+                            Year = 1978,
                             Genre = "Pop",
                             CoverArt = "24",
                             Size = 8421341,
@@ -411,7 +411,7 @@ namespace SubsonicApiTests {
                             Album = "Arrival",
                             Artist = "ABBA",
                             Track = "7",
-                            Year = "1978",
+                            Year = 1978,
                             Genre = "Pop",
                             CoverArt = "25",
                             Size = 4910028,
@@ -426,6 +426,249 @@ namespace SubsonicApiTests {
                 },
             };
             TestFile("randomSongs.xml", expectedResponse);
+        }
+
+        [Test]
+        public static void TestShares() {
+            var expectedResponse = new SubsonicRestResponse {
+                Status = "ok",
+                Version = "1.6.0",
+                Shares = new List<Share> {
+                    new Share {
+                        Id = "1",
+                        Url = new Uri("http://sindre.subsonic.org/share/sKoYn"),
+                        Description = "Check this out",
+                        UserName = "sindre",
+                        Created = new DateTime(2011, 6, 4, 12, 34, 56),
+                        LastVisited = new DateTime(2011, 6, 4, 13, 14, 15),
+                        Expires = new DateTime(2013, 6, 4),
+                        VisitCount = 0,
+                        Entries = new List<Entry> {
+                            new Entry {
+                                Id = "111",
+                                Parent = "11",
+                                Title = "Dancing Queen",
+                                IsDir = false,
+                                Album = "Arrival",
+                                Artist = "ABBA",
+                                Track = "7",
+                                Year = 1978,
+                                Genre = "Pop",
+                                CoverArt = "24",
+                                Size = 8421341,
+                                ContentType = "audio/mpeg",
+                                Suffix = "mp3",
+                                Duration = 146,
+                                BitRate = 128,
+                                Path = "ABBA/Arrival/Dancing Queen.mp3",
+                            },
+                            new Entry {
+                                Id = "112",
+                                Parent = "11",
+                                Title = "Money, Money, Money",
+                                IsDir = false,
+                                Album = "Arrival",
+                                Artist = "ABBA",
+                                Track = "7",
+                                Year = 1978,
+                                Genre = "Pop",
+                                CoverArt = "25",
+                                Size = 4910028,
+                                ContentType = "audio/flac",
+                                Suffix = "flac",
+                                TranscodedContentType = "audio/mpeg",
+                                TranscodedSuffix = "mp3",
+                                Duration = 208,
+                                BitRate = 128,
+                                Path = "ABBA/Arrival/Money, Money, Money.mp3",
+                            },
+                        },
+                    },
+                },
+            };
+            TestFile("shares.xml", expectedResponse);
+        }
+
+        [Test]
+        public static void TestPodcasts() {
+            var expectedResponse = new SubsonicRestResponse {
+                Status = "ok",
+                Version = "1.6.0",
+                Podcasts = new List<Channel> {
+                    new Channel {
+                        Id = "1",
+                        Url = new Uri("http://downloads.bbc.co.uk/podcasts/fivelive/drkarl/rss.xml"),
+                        Title = "Dr Karl and the Naked Scientist",
+                        Description = "Dr Chris Smith aka The Naked Scientist with the latest news from the world of science and Dr Karl answers listeners' science questions.",
+                        Status = "completed",
+                        Episodes = new List<Episode> {
+                            new Episode {
+                                Id = "34",
+                                StreamId = "523",
+                                Title = "Scorpions have re-evolved eyes",
+                                Description = "This week Dr Chris fills us in on the UK's largest free science festival, plus all this week's big scientific discoveries.",
+                                PublishDate = new DateTime(2011, 2, 3, 14, 46, 43),
+                                Status = "completed",
+                                Parent = "11",
+                                IsDir = false,
+                                Year = 2011,
+                                Genre = "Podcast",
+                                CoverArt = "24",
+                                Size = 78421341,
+                                ContentType = "audio/mpeg",
+                                Suffix = "mp3",
+                                Duration = 3146,
+                                BitRate = 128,
+                                Path = "Podcast/drkarl/20110203.mp3",
+                            },
+                            new Episode {
+                                Id = "35",
+                                StreamId = "524",
+                                Title = "Scar tissue and snake venom treatment",
+                                Description = "This week Dr Karl tells the gruesome tale of a surgeon who operated on himself.",
+                                PublishDate = new DateTime(2011, 9, 3, 16, 47, 52),
+                                Status = "completed",
+                                Parent = "11",
+                                IsDir = false,
+                                Year = 2011,
+                                Genre = "Podcast",
+                                CoverArt = "27",
+                                Size = 45624671,
+                                ContentType = "audio/mpeg",
+                                Suffix = "mp3",
+                                Duration = 3099,
+                                BitRate = 128,
+                                Path = "Podcast/drkarl/20110903.mp3"
+                            },
+                        },
+                    },
+                    new Channel {
+                        Id = "2",
+                        Url = new Uri("http://podkast.nrk.no/program/herreavdelingen.rss"),
+                        Title = "NRK P1 - Herreavdelingen",
+                        Description = "Et program der herrene Yan Friis og Finn Bjelke møtes og musikk nytes.",
+                        Status = "completed",
+                    },
+                    new Channel {
+                        Id = "3",
+                        Url = new Uri("http://foo.bar.com/xyz.rss"),
+                        Status = "error",
+                        ErrorMessage = "Not found.",
+                    },
+                },
+            };
+            TestFile("podcasts.xml", expectedResponse);
+        }
+
+        [Test]
+        public static void TestJukeboxPlaylist() {
+            var expectedResponse = new SubsonicRestResponse {
+                Status = "ok",
+                Version = "1.4.0",
+                JukeboxPlaylist = new List<Entry> {
+                    new Entry {
+                        Id = "111",
+                        Parent = "11",
+                        Title = "Dancing Queen",
+                        IsDir = false,
+                        Album = "Arrival",
+                        Artist = "ABBA",
+                        Track = "7",
+                        Year = 1978,
+                        Genre = "Pop",
+                        CoverArt = "24",
+                        Size = 8421341,
+                        ContentType = "audio/mpeg",
+                        Suffix = "mp3",
+                        Duration = 345,
+                        Path = "ABBA/Arrival/Dancing Queen.mp3",
+                    },
+                    new Entry {
+                        Id = "112",
+                        Parent = "11",
+                        Title = "Money, Money, Money",
+                        IsDir = false,
+                        Album = "Arrival",
+                        Artist = "ABBA",
+                        Track = "7",
+                        Year = 1978,
+                        Genre = "Pop",
+                        CoverArt = "25",
+                        Size = 4910028,
+                        ContentType = "audio/flac",
+                        Suffix = "flac",
+                        TranscodedContentType = "audio/mpeg",
+                        TranscodedSuffix = "mp3",
+                        Duration = 240,
+                        Path = "ABBA/Arrival/Money, Money, Money.mp3",
+                    },
+                },
+            };
+            TestFile("jukeboxPlaylist.xml", expectedResponse);
+        }
+
+        [Test]
+        public static void TestJukeboxStatus() {
+            var expectedResponse = new SubsonicRestResponse {
+                Status = "ok",
+                Version = "1.7.0",
+                JukeboxStatus = new JukeboxStatus {
+                    CurrentIndex = 7,
+                    Playing = true,
+                    Gain = 0.9,
+                    Position = 67,
+                }
+            };
+            TestFile("jukeboxStatus.xml", expectedResponse);
+        }
+
+        [Test]
+        public static void TestLyrics() {
+            var expectedResponse = new SubsonicRestResponse {
+                Status = "ok",
+                Version = "1.2.0",
+                Lyrics = new Lyrics {
+                    Artist = "Muse",
+                    Title = "Hysteria",
+                    Value = @"
+    It's bugging me
+    Grating me
+    And twisting me around
+    Yeah I'm endlessly
+    Caving in
+    And turning inside out
+
+    Cause I want it now
+    I want it now
+    Give me your heart and your soul
+    And I'm breaking out
+    I'm breaking out
+    That's when she'll lose control
+
+    It's holding me
+    Morphing me
+    And forcing me to strive
+    To be endlessly
+    Cold within
+    And dreaming I'm alive
+
+    Cause I want it now
+    I want it now
+    Give me your heart and your soul
+    I'm not breaking down
+    I'm breaking out
+    That's when she'll lose control
+
+    And I want you now
+    I want you now
+    I'll feel my heart implode
+    And I'm breaking out
+    Escaping now
+    Feeling my faith erode
+  ".Replace("\r", ""),
+                },
+            };
+            TestFile("lyrics.xml", expectedResponse);
         }
     }
 }

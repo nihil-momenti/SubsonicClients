@@ -6,15 +6,15 @@ using Nemo157.Common;
 
 namespace SubsonicApi.RestData {
     [CompareByProperties]
-    public class Indexes {
-        public Indexes() {
+    public class IndexList {
+        public IndexList() {
             Shortcuts = new List<Shortcut>();
-            Indices = new List<Index>();
+            Indexes = new List<Index>();
             Children = new List<Child>();
         }
         public string LastModified { get; set; }
         public List<Shortcut> Shortcuts { get; set; }
-        public List<Index> Indices { get; set; }
+        public List<Index> Indexes { get; set; }
         public List<Child> Children { get; set; }
     }
 }

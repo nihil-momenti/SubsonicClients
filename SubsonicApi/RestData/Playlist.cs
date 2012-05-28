@@ -15,9 +15,9 @@ namespace SubsonicApi.RestData {
         public string Name { get; set; }
         public string Comment { get; set; }
         public string Owner { get; set; }
-        public bool Public { get; set; }
-        public int SongCount { get; set; }
-        public int Duration { get; set; }
+        public bool? Public { get; set; }
+        public int? SongCount { get; set; }
+        public int? Duration { get; set; }
         public DateTime Created { get; set; }
         public List<AllowedUser> AllowedUsers { get; set; }
     }

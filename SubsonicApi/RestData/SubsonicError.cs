@@ -7,7 +7,7 @@ using Nemo157.Common;
 namespace SubsonicApi.RestData {
     [CompareByProperties]
     public class SubsonicError {
-        public int Code { get; set; }
+        public int? Code { get; set; }
         public string Message { get; set; }
 
         public SubsonicServerException ToException() {

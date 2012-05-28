@@ -18,6 +18,9 @@ namespace SubsonicApi.RestData {
             ChatMessages = new List<ChatMessage>();
             AlbumList = new List<Album>();
             RandomSongs = new List<Song>();
+            Shares = new List<Share>();
+            Podcasts = new List<Channel>();
+            JukeboxPlaylist = new List<Entry>();
         }
          
         public string Status { get; set; }
@@ -25,7 +28,7 @@ namespace SubsonicApi.RestData {
         public SubsonicError Error { get; set; }
         public List<NowPlaying> NowPlaying { get; set; }
         public List<MusicFolder> MusicFolders { get; set; }
-        public Indexes Indexes { get; set; }
+        public IndexList Indexes { get; set; }
         public Directory Directory { get; set; }
         public SearchResult2 SearchResult2 { get; set; }
         public List<Playlist> Playlists { get; set; }
@@ -33,6 +36,11 @@ namespace SubsonicApi.RestData {
         public List<ChatMessage> ChatMessages { get; set; }
         public List<Album> AlbumList { get; set; }
         public List<Song> RandomSongs { get; set; }
+        public List<Share> Shares { get; set; }
+        public List<Channel> Podcasts { get; set; }
+        public List<Entry> JukeboxPlaylist { get; set; }
+        public JukeboxStatus JukeboxStatus { get; set; }
+        public Lyrics Lyrics { get; set; }
 
         private bool? _isOk;
         public bool IsOk {
