@@ -52,10 +52,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataTests.cs" />
+    <Compile Include="RestDataTests\AlbumListTests.cs" />
+    <Compile Include="RestDataTests\ChatMessagesTests.cs" />
+    <Compile Include="RestDataTests\TestHelper.cs" />
+    <Compile Include="RestDataTests\IndexesTests.cs" />
+    <Compile Include="RestDataTests\JukeboxPlaylistTests.cs" />
+    <Compile Include="RestDataTests\JukeboxStatusTests.cs" />
+    <Compile Include="RestDataTests\LyricsTests.cs" />
+    <Compile Include="RestDataTests\MusicDirectoryTests.cs" />
+    <Compile Include="RestDataTests\MusicFolderTests.cs" />
+    <Compile Include="RestDataTests\NowPlayingTests.cs" />
+    <Compile Include="RestDataTests\PingTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleLoader.cs" />
+    <Compile Include="RestDataTests\PlaylistsTest.cs" />
+    <Compile Include="RestDataTests\PodcastsTests.cs" />
+    <Compile Include="RestDataTests\RandomSongsTests.cs" />
+    <Compile Include="RestDataTests\SearchResult2Tests.cs" />
+    <Compile Include="RestDataTests\SharesTests.cs" />
+    <Compile Include="RestDataTests\UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nemo157.Common\Nemo157.Common.csproj">
@@ -71,52 +86,52 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\ping.xml">
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\ping.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\musicFolders.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\musicFolders.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\nowPlaying.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\nowPlaying.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\indexes.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\indexes.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\musicDirectory.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\musicDirectory.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\searchResult2.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\searchResult2.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\playlists.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\playlists.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\user.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\user.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\chatMessages.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\chatMessages.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\albumList.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\albumList.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\randomSongs.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\randomSongs.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\lyrics.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\lyrics.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\jukeboxPlaylist.xml" />
-    <EmbeddedResource Include="ResponseSamples\jukeboxStatus.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\jukeboxPlaylist.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\jukeboxStatus.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\podcasts.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\podcasts.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ResponseSamples\shares.xml" />
+    <EmbeddedResource Include="RestDataTests\ResponseSamples\shares.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
