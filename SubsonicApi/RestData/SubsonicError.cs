@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Nemo157.Common;
+﻿using Nemo157.Common;
+using SubsonicApi.Data;
 
 namespace SubsonicApi.RestData {
     [CompareByProperties]

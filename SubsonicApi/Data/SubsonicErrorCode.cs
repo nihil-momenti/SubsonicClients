@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SubsonicApi {
+﻿
+namespace SubsonicApi.Data {
     public enum SubsonicErrorCode {
         Generic = 0,
         ParameterMissing = 10,

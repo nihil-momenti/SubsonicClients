@@ -1,12 +1,12 @@
 ﻿using NUnit.Framework;
 using SubsonicApi.RestData;
 
-namespace SubsonicApiTests.RestDataTests {
+namespace SubsonicApiTests.DataTests {
     [TestFixture]
     public static class JukeboxStatusTests {
         [Test]
         public static void TestJukeboxStatus() {
-            var expectedResponse = new SubsonicRestResponse {
+            var expectedResponse = new SubsonicResponse {
                 Status = "ok",
                 Version = "1.7.0",
                 JukeboxStatus = new JukeboxStatus {
@@ -16,7 +16,7 @@ namespace SubsonicApiTests.RestDataTests {
                     Position = 67,
                 }
             };
-            TestHelper.TestFile("jukeboxStatus.xml", expectedResponse);
+            TestHelper.TestFileToRest("jukeboxStatus.xml", expectedResponse);
         }
     }
 }

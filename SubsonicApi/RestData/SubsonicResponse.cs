@@ -8,13 +8,18 @@ using RestSharp.Serializers;
 
 namespace SubsonicApi.RestData {
     [CompareByProperties]
-    public class SubsonicRestResponse {
+    public class SubsonicResponse {
         private const string OkStatus = "ok";
 
-        public SubsonicRestResponse() {
+        public SubsonicResponse() {
+            Error = new SubsonicError();
             NowPlaying = new List<NowPlaying>();
             MusicFolders = new List<MusicFolder>();
+            Indexes = new IndexList();
+            Directory = new Directory();
+            SearchResult2 = new SearchResult2();
             Playlists = new List<Playlist>();
+            User = new User();
             ChatMessages = new List<ChatMessage>();
             AlbumList = new List<Album>();
             RandomSongs = new List<Song>();

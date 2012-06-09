@@ -14,6 +14,6 @@ namespace SubsonicApi.RestData {
         public bool? IsDir { get; set; }
         public string CoverArt { get; set; }
         public int? UserRating { get; set; }
-        public double AverageRating { get; set; }
+        public double? AverageRating { get; set; }
     }
 }

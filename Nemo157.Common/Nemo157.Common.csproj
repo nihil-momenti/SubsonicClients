@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndAndExtension.cs" />
     <Compile Include="Async\Async.cs" />
     <Compile Include="Async\AutoDisposingTask.cs" />
     <Compile Include="Testing\CompareByPropertiesAttribute.cs" />

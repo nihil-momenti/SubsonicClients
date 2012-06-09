@@ -1,12 +1,12 @@
 ﻿using NUnit.Framework;
 using SubsonicApi.RestData;
 
-namespace SubsonicApiTests.RestDataTests {
+namespace SubsonicApiTests.DataTests {
     [TestFixture]
     public static class LyricsTests {
         [Test]
         public static void TestLyrics() {
-            var expectedResponse = new SubsonicRestResponse {
+            var expectedResponse = new SubsonicResponse {
                 Status = "ok",
                 Version = "1.2.0",
                 Lyrics = new Lyrics {
@@ -50,7 +50,7 @@ namespace SubsonicApiTests.RestDataTests {
   ".Replace("\r", ""),
                 },
             };
-            TestHelper.TestFile("lyrics.xml", expectedResponse);
+            TestHelper.TestFileToRest("lyrics.xml", expectedResponse);
         }
     }
 }

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using Nemo157.Common;
 using RestSharp;
-using SubsonicApi.RestData;
+using SubsonicApi.Data;
 
 namespace SubsonicApi {
     public class SubsonicClient {
         private readonly RestClient _client;
-
-        public bool Connected { get; set; }
 
         public SubsonicClient(string baseHost, string userName, string password, string clientId) {
             _client = new RestClient(baseHost);
@@ -32,31 +31,41 @@ namespace SubsonicApi {
         }
 
         public async Task<IReadOnlyList<NowPlaying>> GetNowPlaying() {
-            return await DoSimpleRequest("rest/getNowPlaying.view", response => response.NowPlaying);
+            return await DoSimpleRequest("rest/getNowPlaying.view", response => response.NowPlayingList);
         }
 
         public async Task<IndexList> GetIndexes() {
             return await GetIndexes(null, null);
         }
 
-        public async Task<IndexList> GetIndexes(MusicFolder folder) {
-            return await GetIndexes(folder, null);
+        public async Task<IndexList> GetIndexes(SubsonicId id) {
+            return await GetIndexes(id, null);
         }
 
         public async Task<IndexList> GetIndexes(DateTime? modifiedSince) {
             return await GetIndexes(null, modifiedSince);
         }
 
-        public async Task<IndexList> GetIndexes(MusicFolder folder, DateTime? modifiedSince) {
-            var parameters = new List<Parameter>();
-            if (folder != null) {
-                parameters.Add(new Parameter { Name = "musicFolderId", Value = folder.Id, Type = ParameterType.GetOrPost });
-            }
-            if (modifiedSince != null) {
-                // TODO: find out what format this date is supposed to be in
-                parameters.Add(new Parameter { Name = "ifModifiedSince", Value = modifiedSince.Value.ToString("yyyMMddTHHmmss"), Type = ParameterType.GetOrPost });
-            }
+        public async Task<IndexList> GetIndexes(SubsonicId id, DateTime? modifiedSince) {
+            var parameters = new ParameterList();
+            parameters["musicFolderId"] = id.Id;
+            // TODO: find out what format this date is supposed to be in
+            parameters["ifModifiedSince"] = modifiedSince.AndAnd().ToString("yyyyMMddTHHmmss");
             return await DoSimpleRequest("rest/getIndexes.view", parameters, response => response.Indexes);
+        }
+
+        public async Task<MusicFolder> GetMusicDirectory(SubsonicId id) {
+            var parameters = new ParameterList();
+            parameters["id"] = id.Id;
+            return await DoSimpleRequest("rest/getMusicDirectory.view", parameters, response => response.Directory);
+        }
+
+        public async Task<SearchResult2> Search2(SearchParameters parameters) {
+            return await DoSimpleRequest("rest/search2.view", parameters.ToEnumerable(), response => response.SearchResult2);
+        }
+
+        public async Task<IReadOnlyList<Playlist>> GetPlaylists() {
+            return await DoSimpleRequest("rest/getPlaylists.view", response => response.Playlists);
         }
 
         private async Task<T> DoSimpleRequest<T>(string path, Func<SubsonicResponse, T> transform) {
@@ -73,8 +82,8 @@ namespace SubsonicApi {
             return transform(new SubsonicResponse(response.Data));
         }
 
-        private Task<IRestResponse<SubsonicRestResponse>> RunRequest(RestRequest request) {
-            return Task.Run(() => _client.Execute<SubsonicRestResponse>(request));
+        private Task<IRestResponse<RestData.SubsonicResponse>> RunRequest(RestRequest request) {
+            return Task.Run(() => _client.Execute<RestData.SubsonicResponse>(request));
         }
     }
 }

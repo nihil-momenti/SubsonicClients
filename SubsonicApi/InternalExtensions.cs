@@ -5,7 +5,7 @@ using SubsonicApi.RestData;
 
 namespace SubsonicApi {
     internal static class InternalExtensions {
-        internal static void ThrowOnErrors(this IRestResponse<RestData.SubsonicRestResponse> response) {
+        internal static void ThrowOnErrors(this IRestResponse<RestData.SubsonicResponse> response) {
             if (response.ResponseStatus == ResponseStatus.Error) {
                 throw new ConnectionException(response.ErrorMessage, response.ErrorException);
             }

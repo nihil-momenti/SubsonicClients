@@ -2,12 +2,12 @@
 using NUnit.Framework;
 using SubsonicApi.RestData;
 
-namespace SubsonicApiTests.RestDataTests {
+namespace SubsonicApiTests.DataTests {
     [TestFixture]
     public static class AlbumListTests {
         [Test]
         public static void TestAlbumList() {
-            var expectedResponse = new SubsonicRestResponse {
+            var expectedResponse = new SubsonicResponse {
                 Status = "ok",
                 Version = "1.6.0",
                 AlbumList = new List<Album> {
@@ -32,7 +32,7 @@ namespace SubsonicApiTests.RestDataTests {
                     },
                 },
             };
-            TestHelper.TestFile("albumList.xml", expectedResponse);
+            TestHelper.TestFileToRest("albumList.xml", expectedResponse);
         }
     }
 }

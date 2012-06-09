@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using SubsonicApi.RestData;
 
-namespace SubsonicApiTests.RestDataTests {
+namespace SubsonicApiTests.DataTests {
     [TestFixture]
     public static class RandomSongsTests {
         [Test]
         public static void TestRandomSongs() {
-            var expectedResponse = new SubsonicRestResponse {
+            var expectedResponse = new SubsonicResponse {
                 Status = "ok",
                 Version = "1.4.0",
                 RandomSongs = new List<Song> {
@@ -55,7 +55,7 @@ namespace SubsonicApiTests.RestDataTests {
                         },
                 },
             };
-            TestHelper.TestFile("randomSongs.xml", expectedResponse);
+            TestHelper.TestFileToRest("randomSongs.xml", expectedResponse);
         }
     }
 }

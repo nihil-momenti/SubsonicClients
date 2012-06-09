@@ -1,9 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Nemo157.Common;
 
-namespace SubsonicApi {
+namespace SubsonicApi.Data {
+    [CompareByProperties]
     public class SubsonicId {
+        internal string Id { get; private set;}
+
+        public SubsonicId(string id) {
+            Id = id;
+        }
     }
 }

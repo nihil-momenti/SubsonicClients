@@ -49,6 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Album.cs" />
+    <Compile Include="Data\Artist.cs" />
+    <Compile Include="Data\Child.cs" />
+    <Compile Include="Data\Entry.cs" />
+    <Compile Include="Data\Playlist.cs" />
+    <Compile Include="Data\SearchResult2.cs" />
+    <Compile Include="Data\Share.cs" />
+    <Compile Include="Data\Song.cs" />
+    <Compile Include="Data\SubsonicVersion.cs" />
+    <Compile Include="Data\User.cs" />
+    <Compile Include="ParameterList.cs" />
     <Compile Include="RestData\Album.cs" />
     <Compile Include="RestData\AllowedUser.cs" />
     <Compile Include="RestData\Artist.cs" />
@@ -77,11 +88,12 @@
     <Compile Include="InternalExtensions.cs" />
     <Compile Include="RestData\Song.cs" />
     <Compile Include="RestData\User.cs" />
+    <Compile Include="SearchParameters.cs" />
     <Compile Include="SubsonicClient.cs" />
     <Compile Include="Exceptions\SubsonicApiException.cs" />
     <Compile Include="RestData\SubsonicError.cs" />
     <Compile Include="Data\SubsonicErrorCode.cs" />
-    <Compile Include="RestData\SubsonicRestResponse.cs" />
+    <Compile Include="RestData\SubsonicResponse.cs" />
     <Compile Include="Exceptions\SubsonicServerException.cs" />
     <Compile Include="Data\SubsonicId.cs" />
     <Compile Include="Data\SubsonicResponse.cs" />

@@ -52,27 +52,47 @@ namespace Nemo157.Common {
                 return;
             }
 
-            if (expectedType.GetCustomAttributes(typeof(CompareByPropertiesAttribute), true).Any()) {
-                foreach (var property in expectedType.GetProperties().Select(property => new { Name = property.Name, Getter = property.GetMethod })) {
-                    PropertyEquals(property.Getter.Invoke(expected, null), property.Getter.Invoke(actual, null), path + "." + property.Name);
-                }
-            } else if (expectedType == typeof(string)) {
-                string expectedString = (string)expected;
-                string actualString = (string)actual;
-                if (!(expectedString).Equals(actualString, StringComparison.Ordinal)) {
-                    _failures.Add(new StringFailure { Path = path, Expected = expectedString, Actual = actualString });
-                }
+            bool hasCompareByPropertiesAttribute = expectedType.GetCustomAttributes(typeof(CompareByPropertiesAttribute), true).Any();
+
+
+            if (hasCompareByPropertiesAttribute) {
+                CompareProperties(expected, actual, path, expectedType);
+            } else if (expectedType.IsSubclassOf(typeof(string))) {
+                CompareStrings((string)expected, (string)actual, path);
             } else if (typeof(IEnumerable).IsAssignableFrom(expectedType)) {
-                IEnumerable<object> expectedEnumerable = ((IEnumerable)expected).Cast<object>();
-                IEnumerable<object> actualEnumerable = ((IEnumerable)actual).Cast<object>();
-                PropertyEquals(expectedEnumerable.Count(), actualEnumerable.Count(), path + ".Count");
-                foreach (var pair in expectedEnumerable.Zip(actualEnumerable).Select((pair, index) => new { Index = index, Pair = pair })) {
-                    PropertyEquals(pair.Pair.Key, pair.Pair.Value, path + "[" + pair.Index + "]");
-                }
+                CompareEnumerables(expected, actual, path);
             } else {
-                if (!expected.Equals(actual)) {
-                    _failures.Add(new ValueFailure { Path = path, Expected = expected, Actual = actual });
-                }
+                CompareObjects(expected, actual, path);
+            }
+        }
+
+        private void CompareObjects(object expected, object actual, string path) {
+            if (!expected.Equals(actual)) {
+                _failures.Add(new ValueFailure { Path = path, Expected = expected, Actual = actual });
+            }
+        }
+
+        private void CompareEnumerables(object expected, object actual, string path) {
+            IEnumerable<object> expectedEnumerable = ((IEnumerable)expected).Cast<object>();
+            IEnumerable<object> actualEnumerable = ((IEnumerable)actual).Cast<object>();
+            PropertyEquals(expectedEnumerable.Count(), actualEnumerable.Count(), path + ".Count");
+            foreach (var pair in expectedEnumerable.Zip(actualEnumerable).Select((pair, index) => new { Index = index, Pair = pair })) {
+                PropertyEquals(pair.Pair.Key, pair.Pair.Value, path + "[" + pair.Index + "]");
+            }
+        }
+
+        private void CompareStrings(string expected, string actual, string path) {
+            if (!(expected).Equals(actual, StringComparison.Ordinal)) {
+                _failures.Add(new StringFailure { Path = path, Expected = expected, Actual = actual });
+            }
+        }
+
+        private void CompareProperties(object expected, object actual, string path, Type type) {
+            var properties = type.GetProperties().Select(property => new { Name = property.Name, Getter = property.GetMethod });
+            foreach (var property in properties) {
+                var expectedItem = property.Getter.Invoke(expected, null);
+                var actualItem = property.Getter.Invoke(actual, null);
+                PropertyEquals(expectedItem, actualItem, path + "." + property.Name);
             }
         }
 

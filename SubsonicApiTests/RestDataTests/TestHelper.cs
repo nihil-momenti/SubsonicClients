@@ -8,9 +8,8 @@ using Nemo157.Common;
 using NUnit.Framework;
 using RestSharp;
 using RestSharp.Deserializers;
-using SubsonicApi.RestData;
 
-namespace SubsonicApiTests.RestDataTests {
+namespace SubsonicApiTests.DataTests {
     [TestFixture]
     public static class TestHelper {
         internal static Task<Stream> LoadSample(string sample) {
@@ -27,10 +26,17 @@ namespace SubsonicApiTests.RestDataTests {
             return response.Object;
         }
 
-        internal static void TestFile(string dataFile, SubsonicRestResponse expectedResponse) {
+        internal static void TestFileToRest(string dataFile, SubsonicApi.RestData.SubsonicResponse expectedResponse) {
             using (var response = CreateResponse(dataFile)) {
-                var subsonicResponse = new XmlDeserializer().Deserialize<SubsonicRestResponse>(response.Result);
+                var subsonicResponse = new XmlDeserializer().Deserialize<SubsonicApi.RestData.SubsonicResponse>(response.Result);
                 Assert.That(subsonicResponse, Iss.EqualByPropertyTo(expectedResponse));
+            }
+        }
+
+        internal static void TestFileToData(string dataFile, SubsonicApi.Data.SubsonicResponse expectedResponse) {
+            using (var response = CreateResponse(dataFile)) {
+                var subsonicResponse = new XmlDeserializer().Deserialize<SubsonicApi.RestData.SubsonicResponse>(response.Result);
+                Assert.That(new SubsonicApi.Data.SubsonicResponse(subsonicResponse), Iss.EqualByPropertyTo(expectedResponse));
             }
         }
     }

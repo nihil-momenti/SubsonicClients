@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using SubsonicApi.RestData;
 
-namespace SubsonicApiTests.RestDataTests {
+namespace SubsonicApiTests.DataTests {
     [TestFixture]
     public static class MusicDirectoryTests {
         [Test]
         public static void TestMusicDirectory() {
-            var expectedResponse = new SubsonicRestResponse {
+            var expectedResponse = new SubsonicResponse {
                 Status = "ok",
                 Version = "1.4.0",
                 Directory = new Directory {
@@ -60,7 +60,7 @@ namespace SubsonicApiTests.RestDataTests {
                     },
                 },
             };
-            TestHelper.TestFile("musicDirectory.xml", expectedResponse);
+            TestHelper.TestFileToRest("musicDirectory.xml", expectedResponse);
         }
     }
 }
